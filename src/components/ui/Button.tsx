@@ -23,9 +23,9 @@ export function Button({
   const baseClasses = 'inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed';
   
   const variants = {
-    primary: 'bg-accent-primary text-white hover:bg-opacity-90 shadow-[0_0_15px_var(--color-accent-glow)]',
+    primary: 'bg-accent-primary text-white hover:bg-accent-primary/90 shadow-sm',
     secondary: 'bg-bg-elevated text-text-primary border border-border-default hover:border-border-active',
-    danger: 'bg-color-error text-white hover:bg-opacity-90 shadow-[0_0_10px_rgba(255,107,107,0.3)]',
+    danger: 'bg-color-error text-white hover:bg-color-error/90 shadow-sm',
     ghost: 'bg-transparent text-text-secondary hover:text-text-primary hover:bg-bg-elevated',
   };
   

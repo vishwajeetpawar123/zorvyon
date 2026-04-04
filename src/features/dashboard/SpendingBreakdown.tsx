@@ -7,17 +7,17 @@ import { formatCurrency, capitalize } from '../../utils/formatters';
 import { Home, ShoppingCart, Zap, Car, Tv, Utensils, ShoppingBag, Stethoscope, Mail, GraduationCap, Box } from 'lucide-react';
 
 const CATEGORY_COLORS: Record<string, string> = {
-  housing: '#6C5CE7',
-  groceries: '#00D68F',
-  utilities: '#54A0FF',
-  transportation: '#FDCB6E',
-  entertainment: '#FF6B6B',
-  dining: '#FF9F43',
-  shopping: '#E84393',
-  healthcare: '#00CEC9',
-  subscriptions: '#A29BFE',
-  education: '#FDCB6E',
-  other: '#B2BEC3',
+  housing: '#2563EB',
+  groceries: '#16A34A',
+  utilities: '#0284C7',
+  transportation: '#D97706',
+  entertainment: '#DC2626',
+  dining: '#EA580C',
+  shopping: '#DB2777',
+  healthcare: '#0891B2',
+  subscriptions: '#7C3AED',
+  education: '#CA8A04',
+  other: '#6B7280',
 };
 
 const CATEGORY_ICONS: Record<string, any> = {
@@ -55,23 +55,23 @@ export function SpendingBreakdown() {
 
   return (
     <Card 
-      title="Top Spending Categories" 
-      subtitle="Highest expenses by category"
+      title="Top Spending" 
+      subtitle="By category"
       glass
-      className="col-span-1 lg:col-span-1 h-[320px] lg:h-[380px] animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-both"
-      contentClassName="flex flex-col lg:flex-row items-center overflow-hidden lg:gap-2 px-4 pb-2"
+      className="col-span-1 lg:col-span-1 min-h-[280px] lg:h-[380px] animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-both"
+      contentClassName="flex flex-col overflow-auto px-4 pb-2"
       style={{ animationDelay: '300ms' }}
     >
-      <div className="w-full lg:w-1/2 h-32 lg:h-full shrink-0">
+      <div className="w-full h-36 lg:h-40 shrink-0 mb-2">
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>
             <Pie
               data={data}
               cx="50%"
               cy="50%"
-              innerRadius={45}
-              outerRadius={60}
-              paddingAngle={5}
+              innerRadius={40}
+              outerRadius={58}
+              paddingAngle={4}
               dataKey="value"
               nameKey="name"
             >
@@ -97,7 +97,7 @@ export function SpendingBreakdown() {
         </ResponsiveContainer>
       </div>
       
-      <div className="flex-1 w-full flex flex-col justify-center gap-0.5">
+      <div className="flex-1 w-full flex flex-col justify-start gap-0.5">
         {data.map((item) => {
           const Icon = CATEGORY_ICONS[item.name] || Box;
           const color = CATEGORY_COLORS[item.name] || CATEGORY_COLORS.other;
@@ -115,7 +115,7 @@ export function SpendingBreakdown() {
                 </div>
                 <div>
                   <span className="text-xs font-semibold text-text-primary capitalize block leading-none">{item.name}</span>
-                  <span className="text-[10px] text-text-muted leading-tight">{((item.value / total) * 100).toFixed(0)}% of total</span>
+                  <span className="text-[10px] text-text-muted leading-tight">{((item.value / total) * 100).toFixed(0)}%</span>
                 </div>
               </div>
               <div className="text-right">

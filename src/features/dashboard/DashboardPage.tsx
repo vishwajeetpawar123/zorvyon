@@ -23,7 +23,7 @@ export function DashboardPage() {
       <header className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 animate-in fade-in slide-in-from-top-4 duration-500 fill-mode-both">
         <div>
           <h1 className="text-2xl font-bold text-text-primary">
-            {getGreeting()}, {profileName} 👋
+            {getGreeting()}, {profileName}
           </h1>
           <p className="text-text-secondary mt-1">Here is your financial summary for today.</p>
         </div>

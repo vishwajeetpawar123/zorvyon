@@ -62,7 +62,7 @@ export const SettingsPage = () => {
         
         <div className="lg:col-span-2 space-y-6">
           
-          <div className="glass-panel border border-border-default rounded-3xl p-6 shadow-sm bg-bg-surface/50">
+          <div className="glass-panel border border-border-default rounded-2xl p-6 shadow-sm bg-bg-surface/50">
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-accent-glow rounded-xl text-accent-primary">
@@ -72,7 +72,7 @@ export const SettingsPage = () => {
               </div>
               <button
                 onClick={handleSaveProfile}
-                className="flex items-center gap-2 text-sm font-medium bg-accent-primary text-white py-2 px-4 rounded-xl hover:opacity-90 transition-all shadow-md shadow-accent-primary/20"
+                className="flex items-center gap-2 text-sm font-medium bg-accent-primary text-white py-2 px-4 rounded-xl hover:opacity-90 transition-all shadow-sm"
               >
                 <Save className="w-4 h-4" /> Save
               </button>
@@ -100,7 +100,7 @@ export const SettingsPage = () => {
             </div>
           </div>
 
-          <div className="glass-panel border border-border-default rounded-3xl p-6 shadow-sm bg-bg-surface/50">
+          <div className="glass-panel border border-border-default rounded-2xl p-6 shadow-sm bg-bg-surface/50">
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-info/10 rounded-xl text-info border border-info/20">
@@ -110,7 +110,7 @@ export const SettingsPage = () => {
               </div>
               <button
                 onClick={handleAddBank}
-                className="flex items-center gap-2 text-sm font-medium bg-accent-primary text-white py-2 px-4 rounded-xl hover:opacity-90 transition-all shadow-md shadow-accent-primary/20"
+                className="flex items-center gap-2 text-sm font-medium bg-accent-primary text-white py-2 px-4 rounded-xl hover:opacity-90 transition-all shadow-sm"
               >
                 <Plus className="w-4 h-4" /> Connect Bank
               </button>
@@ -147,7 +147,7 @@ export const SettingsPage = () => {
 
         <div className="space-y-6">
           
-          <div className="glass-panel border border-border-default rounded-3xl p-6 shadow-sm bg-bg-surface/50">
+          <div className="glass-panel border border-border-default rounded-2xl p-6 shadow-sm bg-bg-surface/50">
             <h2 className="text-lg font-bold text-text-primary mb-4">Preferences</h2>
             
             <div className="space-y-4">
@@ -167,7 +167,7 @@ export const SettingsPage = () => {
             </div>
           </div>
 
-          <div className="glass-panel border border-border-default rounded-3xl p-6 shadow-sm bg-bg-surface/50 space-y-8">
+          <div className="glass-panel border border-border-default rounded-2xl p-6 shadow-sm bg-bg-surface/50 space-y-8">
             
             <div>
               <div className="flex items-center gap-3 mb-4">

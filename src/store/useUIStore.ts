@@ -39,8 +39,8 @@ export const useUIStore = create<UIStore>()(
       activeModal: null,
 
       currency: 'USD',
-      profileName: 'Vishwas',
-      profileEmail: 'vishwas@zorvyn.com',
+      profileName: 'Vaishnavi',
+      profileEmail: 'vaishnavi@zorvyn.com',
       alertsEnabled: true,
       weeklySummaries: false,
       linkedBanks: [
