@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+/* 
+ * Zorvyn Design System — "Carbon Glass"
+ * Configured directly in CSS using Tailwind v4 @theme blocks.
+ */
+
+@theme {
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+@layer base {
+  :root {
+    /* Light Mode Tokens (Default for basic styling if needed, but app is dark mode first) */
+    --bg-base: #F5F6FA;
+    --bg-surface: #FFFFFF;
+    --bg-elevated: #FFFFFF;
+    
+    --border-default: #E2E5F0;
+    --border-active: #C4C9DB;
+    
+    --text-primary: #1A1D2E;
+    --text-secondary: #6B7280;
+    --text-muted: #9CA3AF;
+    
+    --accent-primary: #6C5CE7;
+    --accent-glow: rgba(108, 92, 231, 0.15);
+    
+    --color-success: #00D68F;
+    --color-error: #FF6B6B;
+    --color-warning: #FDCB6E;
+    --color-info: #54A0FF;
+    
+    --glass-bg: rgba(255, 255, 255, 0.85);
+  }
+
+  :root[data-theme='dark'] {
+    /* Dark Mode Tokens (Carbon Glass) */
+    --bg-base: #0B0D11;
+    --bg-surface: #141720;
+    --bg-elevated: #1C2030;
+    
+    --border-default: #2A2F3E;
+    --border-active: #3D4358;
+    
+    --text-primary: #F0F2F5;
+    --text-secondary: #8B92A5;
+    --text-muted: #565D73;
+    
+    --accent-primary: #6C5CE7;
+    --accent-glow: rgba(108, 92, 231, 0.15);
+    
+    --color-success: #00D68F;
+    --color-error: #FF6B6B;
+    --color-warning: #FDCB6E;
+    --color-info: #54A0FF;
+    
+    --glass-bg: rgba(20, 23, 32, 0.7);
+  }
+}
+
+@theme {
+  /* Wire up Tailwind's standard config to our CSS variables */
+  --color-bg-base: var(--bg-base);
+  --color-bg-surface: var(--bg-surface);
+  --color-bg-elevated: var(--bg-elevated);
+  
+  --color-border-default: var(--border-default);
+  --color-border-active: var(--border-active);
+  
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  
+  --color-accent-primary: var(--accent-primary);
+  --color-accent-glow: var(--accent-glow);
+  
+  --color-success: var(--color-success);
+  --color-error: var(--color-error);
+  --color-warning: var(--color-warning);
+  --color-info: var(--color-info);
+}
+
+@layer base {
+  body {
+    @apply bg-bg-base text-text-primary font-sans antialiased;
+    margin: 0;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .premium-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-active) transparent;
+  }
+
+  .premium-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .premium-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .premium-scrollbar::-webkit-scrollbar-thumb {
+    background-color: var(--border-active);
+    border-radius: 20px;
+    border: 2px solid transparent;
+  }
+
+  .premium-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: var(--text-muted);
+  }
+
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0);
+  }
+}
