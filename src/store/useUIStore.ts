@@ -8,7 +8,6 @@ interface UIStore {
   sidebarCollapsed: boolean;
   activeModal: string | null;
 
-  // Settings — persisted
   currency: Currency;
   profileName: string;
   profileEmail: string;
@@ -16,14 +15,12 @@ interface UIStore {
   weeklySummaries: boolean;
   linkedBanks: LinkedBank[];
 
-  // Actions
   toggleTheme: () => void;
   setRole: (role: Role) => void;
   toggleSidebar: () => void;
   openModal: (id: string) => void;
   closeModal: () => void;
 
-  // Settings actions
   setCurrency: (c: Currency) => void;
   setProfileName: (name: string) => void;
   setProfileEmail: (email: string) => void;
@@ -41,7 +38,6 @@ export const useUIStore = create<UIStore>()(
       sidebarCollapsed: false,
       activeModal: null,
 
-      // Settings defaults
       currency: 'USD',
       profileName: 'Vishwas',
       profileEmail: 'vishwas@zorvyn.com',
@@ -68,7 +64,6 @@ export const useUIStore = create<UIStore>()(
       openModal: (id) => set({ activeModal: id }),
       closeModal: () => set({ activeModal: null }),
 
-      // Settings actions
       setCurrency: (currency) => set({ currency }),
       setProfileName: (profileName) => set({ profileName }),
       setProfileEmail: (profileEmail) => set({ profileEmail }),

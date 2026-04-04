@@ -17,7 +17,6 @@ export function TransactionsPage() {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [editId, setEditId] = useState<string | null>(null);
 
-  // Allow routing here with ?add=true to pop the modal
   useEffect(() => {
     if (searchParams.get('add') === 'true' && role === 'admin') {
       setIsFormOpen(true);
@@ -36,7 +35,6 @@ export function TransactionsPage() {
   };
 
   const handleExport = (format: 'csv' | 'json') => {
-    // In a real app we'd export the filtered list. I'll export all for simplicity here.
     if (format === 'csv') exportToCSV(transactions);
     else exportToJSON(transactions);
   };
@@ -54,7 +52,6 @@ export function TransactionsPage() {
             <Button variant="secondary" icon={<Download className="h-4 w-4" />}>
               Export
             </Button>
-            {/* Simple dropdown for export options via hover */}
             <div className="absolute right-0 mt-2 w-40 bg-bg-surface border border-border-default rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
               <button onClick={() => handleExport('csv')} className="block w-full text-left px-4 py-2 text-sm text-text-primary hover:bg-bg-elevated first:rounded-t-lg">Export as CSV</button>
               <button onClick={() => handleExport('json')} className="block w-full text-left px-4 py-2 text-sm text-text-primary hover:bg-bg-elevated last:rounded-b-lg">Export as JSON</button>

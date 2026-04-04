@@ -7,7 +7,6 @@ export interface ToastMessage {
   type?: 'success' | 'info';
 }
 
-// Simple global toast state
 let toastListeners: ((msg: ToastMessage) => void)[] = [];
 
 export function showToast(text: string, type: 'success' | 'info' = 'success') {
@@ -33,7 +32,6 @@ export function ToastContainer() {
     setToasts((prev) => prev.filter((t) => t.id !== id));
   };
 
-  // Auto-dismiss after 3s
   useEffect(() => {
     if (toasts.length === 0) return;
     const timer = setTimeout(() => {

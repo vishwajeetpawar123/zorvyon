@@ -16,22 +16,16 @@ export function TransactionTable({ onEdit }: TransactionTableProps) {
   const { role, currency } = useUIStore();
 
   const filteredAndSorted = useMemo(() => {
-    // Filter
     let result = transactions.filter(t => {
-      // Search
       if (filters.search && !t.description.toLowerCase().includes(filters.search.toLowerCase())) return false;
-      // Type
       if (filters.type !== 'all' && t.type !== filters.type) return false;
-      // Categories
       if (filters.categories && filters.categories.length > 0) {
         if (!filters.categories.includes(t.category)) return false;
       }
-      // Date constraints
       if (filters.dateRange.from) {
         if (new Date(t.date) < new Date(filters.dateRange.from)) return false;
       }
       if (filters.dateRange.to) {
-        // Add 1 day to 'to' date to make it inclusive for that day
         const toDate = new Date(filters.dateRange.to);
         toDate.setDate(toDate.getDate() + 1);
         if (new Date(t.date) >= toDate) return false;
@@ -39,7 +33,6 @@ export function TransactionTable({ onEdit }: TransactionTableProps) {
       return true;
     });
 
-    // Sort
     result.sort((a, b) => {
       let aVal = a[sortConfig.key];
       let bVal = b[sortConfig.key];
@@ -56,7 +49,6 @@ export function TransactionTable({ onEdit }: TransactionTableProps) {
     return result;
   }, [transactions, filters, sortConfig]);
 
-  // Pagination logic
   const totalPages = Math.ceil(filteredAndSorted.length / pagination.pageSize);
   const paginatedData = filteredAndSorted.slice(
     (pagination.page - 1) * pagination.pageSize,

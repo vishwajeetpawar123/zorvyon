@@ -13,7 +13,6 @@ export function MonthlyComparison() {
 
   const data = useMemo(() => {
     const raw = getMonthlyComparison(transactions);
-    // Format month for display (e.g., "Oct 25")
     return raw.map(m => {
       const [year, mo] = m.month.split('-');
       const date = new Date(Number(year), Number(mo) - 1, 1);

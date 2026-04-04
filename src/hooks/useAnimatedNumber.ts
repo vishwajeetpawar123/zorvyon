@@ -12,7 +12,6 @@ export function useAnimatedNumber(target: number, duration: number = 800) {
       const progress = timestamp - startTime;
       const percentage = Math.min(progress / duration, 1);
       
-      // Easing function (easeOutExpo)
       const easePercentage = percentage === 1 ? 1 : 1 - Math.pow(2, -10 * percentage);
       
       setCurrent(target * easePercentage);

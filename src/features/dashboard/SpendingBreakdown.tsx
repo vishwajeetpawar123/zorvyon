@@ -48,7 +48,7 @@ export function SpendingBreakdown() {
     return Object.entries(grouped)
       .map(([name, value]) => ({ name, value }))
       .sort((a, b) => b.value - a.value)
-      .slice(0, 5); // top 5
+      .slice(0, 5);
   }, [transactions]);
 
   const total = data.reduce((acc, curr) => acc + curr.value, 0);

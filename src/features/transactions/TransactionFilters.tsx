@@ -17,7 +17,6 @@ export function TransactionFilters() {
     else setFilter('categories', [val]);
   };
   
-  // Minimal Date range filter logic for interview
   const handleDateFrom = (e: React.ChangeEvent<HTMLInputElement>) => setFilter('dateRange', { ...filters.dateRange, from: e.target.value || null });
   const handleDateTo = (e: React.ChangeEvent<HTMLInputElement>) => setFilter('dateRange', { ...filters.dateRange, to: e.target.value || null });
 

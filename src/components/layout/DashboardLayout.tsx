@@ -10,12 +10,10 @@ export function DashboardLayout() {
   
   return (
     <div className="min-h-screen bg-bg-base flex">
-      {/* Sidebar — desktop only */}
       <div className="hidden lg:block">
         <Sidebar />
       </div>
       
-      {/* Main Content Area */}
       <div className={`flex-1 flex flex-col transition-all duration-300 ${sidebarCollapsed ? 'lg:ml-20' : 'lg:ml-64'}`}>
         <Header />
         
@@ -26,10 +24,7 @@ export function DashboardLayout() {
         </main>
       </div>
 
-      {/* Mobile bottom nav */}
       <MobileNav />
-
-      {/* Global toast notifications */}
       <ToastContainer />
     </div>
   );

@@ -7,11 +7,11 @@ export type Category =
 
 export interface Transaction {
   id: string;
-  date: string;           // ISO date string
+  date: string;
   description: string;
   category: Category;
   type: 'income' | 'expense';
-  amount: number;         // Always positive, type determines sign
+  amount: number;
   status: 'completed' | 'pending';
 }
 

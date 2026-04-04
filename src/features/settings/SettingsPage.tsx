@@ -14,10 +14,8 @@ export const SettingsPage = () => {
     linkedBanks, unlinkBank, addBank,
   } = useUIStore();
 
-  // Security (visual-only, local state)
   const [twoFactorAuth, setTwoFactorAuth] = useState(true);
 
-  // Local editable copies for profile (save on button click)
   const [localName, setLocalName] = useState(profileName);
   const [localEmail, setLocalEmail] = useState(profileEmail);
 
@@ -62,10 +60,8 @@ export const SettingsPage = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         
-        {/* Left Column */}
         <div className="lg:col-span-2 space-y-6">
           
-          {/* Profile Card */}
           <div className="glass-panel border border-border-default rounded-3xl p-6 shadow-sm bg-bg-surface/50">
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-3">
@@ -104,7 +100,6 @@ export const SettingsPage = () => {
             </div>
           </div>
 
-          {/* Connected Banks */}
           <div className="glass-panel border border-border-default rounded-3xl p-6 shadow-sm bg-bg-surface/50">
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-3">
@@ -150,10 +145,8 @@ export const SettingsPage = () => {
           </div>
         </div>
 
-        {/* Right Column */}
         <div className="space-y-6">
           
-          {/* Financial Preferences */}
           <div className="glass-panel border border-border-default rounded-3xl p-6 shadow-sm bg-bg-surface/50">
             <h2 className="text-lg font-bold text-text-primary mb-4">Preferences</h2>
             
@@ -174,10 +167,8 @@ export const SettingsPage = () => {
             </div>
           </div>
 
-          {/* Security & Notifications */}
           <div className="glass-panel border border-border-default rounded-3xl p-6 shadow-sm bg-bg-surface/50 space-y-8">
             
-            {/* Security */}
             <div>
               <div className="flex items-center gap-3 mb-4">
                 <Shield className="w-5 h-5 text-success" />
@@ -200,7 +191,6 @@ export const SettingsPage = () => {
 
             <div className="h-px bg-border-default w-full"></div>
 
-            {/* Notifications */}
             <div>
               <div className="flex items-center gap-3 mb-4">
                 <Bell className="w-5 h-5 text-warning" />

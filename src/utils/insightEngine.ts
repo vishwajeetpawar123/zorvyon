@@ -24,7 +24,6 @@ export function getTopCategories(transactions: Transaction[]): CategoryStat[] {
 
 export function getMonthlyComparison(transactions: Transaction[]): MonthlyData[] {
   const monthsData = transactions.reduce((acc, t) => {
-    // get YYYY-MM
     const month = t.date.substring(0, 7);
     if (!acc[month]) {
       acc[month] = { month, income: 0, expenses: 0, savings: 0 };
@@ -49,7 +48,6 @@ export function getAiInsights(transactions: Transaction[], currency: Currency = 
   const topCategories = getTopCategories(transactions);
   const monthlyData = getMonthlyComparison(transactions);
 
-  // 1. Highest Spending Category
   if (topCategories.length > 0) {
     const highest = topCategories[0];
     insights.push({
@@ -62,7 +60,6 @@ export function getAiInsights(transactions: Transaction[], currency: Currency = 
     });
   }
 
-  // 2. Savings Rate Hero
   if (monthlyData.length >= 2) {
     const bestMonth = [...monthlyData].sort((a, b) => b.savings - a.savings)[0];
     if (bestMonth.savings > 0) {
@@ -78,10 +75,8 @@ export function getAiInsights(transactions: Transaction[], currency: Currency = 
     }
   }
 
-  // 3. Average Daily Spend
   const expenses = transactions.filter(t => t.type === 'expense');
   if (expenses.length > 0) {
-    // calculate days difference between first and last txn
     const sortedDates = expenses.map(t => new Date(t.date).getTime()).sort((a, b) => a - b);
     const earliest = sortedDates[0];
     const latest = sortedDates[sortedDates.length - 1];
@@ -100,7 +95,6 @@ export function getAiInsights(transactions: Transaction[], currency: Currency = 
     });
   }
 
-  // 4. Monthly Trend Alert
   if (monthlyData.length >= 2) {
     const currentM = monthlyData[monthlyData.length - 1];
     const prevM = monthlyData[monthlyData.length - 2];

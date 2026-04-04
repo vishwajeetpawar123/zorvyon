@@ -17,7 +17,6 @@ interface TransactionStore {
   sortConfig: { key: keyof Transaction; direction: 'asc' | 'desc' };
   pagination: { page: number; pageSize: number };
 
-  // Actions
   addTransaction: (t: Omit<Transaction, 'id'>) => void;
   updateTransaction: (id: string, t: Partial<Transaction>) => void;
   deleteTransaction: (id: string) => void;
@@ -67,7 +66,7 @@ export const useTransactionStore = create<TransactionStore>()(
       setFilter: (key, value) =>
         set((state) => ({
           filters: { ...state.filters, [key]: value },
-          pagination: { ...state.pagination, page: 1 }, // Reset to first page on filter
+          pagination: { ...state.pagination, page: 1 },
         })),
 
       resetFilters: () =>
@@ -100,7 +99,7 @@ export const useTransactionStore = create<TransactionStore>()(
     {
       name: 'zorvyn-transactions',
       partialize: (state) => ({
-        transactions: state.transactions, // persist only transactions, resetting filters on reload is usually preferred
+        transactions: state.transactions,
       }),
     }
   )

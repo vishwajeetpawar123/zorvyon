@@ -12,7 +12,7 @@ export function RecentTransactions() {
   const { currency } = useUIStore();
   const navigate = useNavigate();
 
-  const recentTxns = transactions.slice(0, 5); // Just the latest 5
+  const recentTxns = transactions.slice(0, 5);
 
   return (
     <Card 

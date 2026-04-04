@@ -1,10 +1,5 @@
 @import "tailwindcss";
 
-/* 
- * Zorvyn Design System — "Carbon Glass"
- * Configured directly in CSS using Tailwind v4 @theme blocks.
- */
-
 @theme {
   --font-sans: 'Inter', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
@@ -12,7 +7,6 @@
 
 @layer base {
   :root {
-    /* Light Mode Tokens (Default for basic styling if needed, but app is dark mode first) */
     --bg-base: #F5F6FA;
     --bg-surface: #FFFFFF;
     --bg-elevated: #FFFFFF;
@@ -36,7 +30,6 @@
   }
 
   :root[data-theme='dark'] {
-    /* Dark Mode Tokens (Carbon Glass) */
     --bg-base: #0B0D11;
     --bg-surface: #141720;
     --bg-elevated: #1C2030;
@@ -61,7 +54,6 @@
 }
 
 @theme {
-  /* Wire up Tailwind's standard config to our CSS variables */
   --color-bg-base: var(--bg-base);
   --color-bg-surface: var(--bg-surface);
   --color-bg-elevated: var(--bg-elevated);

@@ -26,12 +26,10 @@ export const LoginPage = () => {
 
   return (
     <div className="min-h-screen bg-bg-base flex items-center justify-center p-4 relative overflow-hidden">
-      {/* Decorative Glow Elements */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent-glow rounded-full mix-blend-screen filter blur-3xl opacity-50 animate-pulse"></div>
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-info/20 rounded-full mix-blend-screen filter blur-3xl opacity-50 animate-pulse delay-1000"></div>
 
       <div className="max-w-4xl w-full grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
-        {/* Main Login Form */}
         <div className="glass-panel border border-border-default rounded-3xl p-8 md:p-10 shadow-2xl flex flex-col justify-center bg-bg-elevated/60">
           <div className="mb-8 text-center">
             <img src={zorvynLogo} alt="Zorvyn Fintech" className="h-12 mx-auto mb-4 object-contain" />
@@ -94,7 +92,6 @@ export const LoginPage = () => {
           </form>
         </div>
 
-        {/* Evaluator Credentials Card */}
         <div className="glass-panel border border-border-default rounded-3xl p-8 md:p-10 shadow-xl flex flex-col justify-center bg-bg-surface/40 backdrop-blur-md">
           <div className="flex items-center gap-3 mb-6">
             <div className="p-2 bg-success/10 rounded-xl border border-success/20">
