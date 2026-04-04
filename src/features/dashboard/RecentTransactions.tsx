@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom';
 import { Card } from '../../components/ui/Card';
-import { Button } from '../../components/ui/Button';
 import { Badge } from '../../components/ui/Badge';
 import { useTransactionStore } from '../../store/useTransactionStore';
 import { useUIStore } from '../../store/useUIStore';
