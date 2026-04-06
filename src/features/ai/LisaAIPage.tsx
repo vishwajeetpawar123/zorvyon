@@ -95,7 +95,7 @@ export function LisaAIPage() {
   };
 
   return (
-    <div className="h-[calc(100vh-180px)] sm:h-[calc(100vh-200px)] flex flex-col space-y-4 max-w-4xl mx-auto overflow-hidden">
+    <div className="h-[calc(100vh-140px)] sm:h-[calc(100vh-120px)] flex flex-col space-y-4 max-w-4xl mx-auto overflow-hidden">
       <header className="flex-shrink-0 flex flex-col sm:flex-row sm:items-end justify-between gap-4 animate-in fade-in slide-in-from-top-4 duration-500 fill-mode-both">
         <div>
           <h1 className="text-2xl font-bold text-text-primary flex items-center gap-2">
