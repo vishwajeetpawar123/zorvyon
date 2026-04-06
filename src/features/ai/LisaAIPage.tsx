@@ -95,8 +95,8 @@ export function LisaAIPage() {
   };
 
   return (
-    <div className="h-[calc(100vh-140px)] flex flex-col space-y-4 max-w-4xl mx-auto pb-4">
-      <header className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 animate-in fade-in slide-in-from-top-4 duration-500 fill-mode-both">
+    <div className="h-[calc(100vh-180px)] sm:h-[calc(100vh-200px)] flex flex-col space-y-4 max-w-4xl mx-auto overflow-hidden">
+      <header className="flex-shrink-0 flex flex-col sm:flex-row sm:items-end justify-between gap-4 animate-in fade-in slide-in-from-top-4 duration-500 fill-mode-both">
         <div>
           <h1 className="text-2xl font-bold text-text-primary flex items-center gap-2">
             <Sparkles className="h-6 w-6 text-accent-primary" /> LISA AI
@@ -105,7 +105,7 @@ export function LisaAIPage() {
         </div>
       </header>
 
-      <Card glass className="flex-1 flex flex-col overflow-hidden border-border-default shadow-2xl relative">
+      <Card glass className="flex-1 min-h-0 flex flex-col overflow-hidden border-border-default shadow-2xl relative">
         {/* Messages List */}
         <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-6 premium-scrollbar">
           {messages.length === 0 && !isLoading && !error && (
