@@ -41,7 +41,9 @@ export function DashboardPage() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <BalanceTrend />
         <BudgetGoals />
-        <SpendingBreakdown />
+        <div className="lg:row-span-2">
+          <SpendingBreakdown />
+        </div>
         <RecentTransactions />
       </div>
     </div>

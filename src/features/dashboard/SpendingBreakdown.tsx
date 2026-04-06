@@ -58,11 +58,11 @@ export function SpendingBreakdown() {
       title="Top Spending" 
       subtitle="By category"
       glass
-      className="col-span-1 lg:col-span-1 min-h-[280px] lg:h-[380px] animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-both"
-      contentClassName="flex flex-col overflow-auto px-4 pb-2"
+      className="col-span-1 lg:col-span-1 h-full animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-both"
+      contentClassName="flex flex-col overflow-auto premium-scrollbar px-4 pb-4"
       style={{ animationDelay: '300ms' }}
     >
-      <div className="w-full h-36 lg:h-40 shrink-0 mb-2">
+      <div className="w-full h-40 lg:h-48 shrink-0 mb-4">
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>
             <Pie
@@ -97,14 +97,14 @@ export function SpendingBreakdown() {
         </ResponsiveContainer>
       </div>
       
-      <div className="flex-1 w-full flex flex-col justify-start gap-0.5">
+      <div className="flex-1 w-full flex flex-col justify-start gap-1">
         {data.map((item) => {
           const Icon = CATEGORY_ICONS[item.name] || Box;
           const color = CATEGORY_COLORS[item.name] || CATEGORY_COLORS.other;
           return (
             <div 
               key={item.name} 
-              className="flex items-center justify-between py-1.5 border-b border-border-default last:border-0 hover:bg-bg-elevated/40 px-2 rounded-lg transition-all cursor-pointer group"
+              className="flex items-center justify-between py-2 border-b border-border-default last:border-0 hover:bg-bg-elevated/40 px-3 rounded-xl transition-all cursor-pointer group"
             >
               <div className="flex items-center gap-2.5">
                 <div 
