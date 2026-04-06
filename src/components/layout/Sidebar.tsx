@@ -1,7 +1,7 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useUIStore } from '../../store/useUIStore';
 import { useAuthStore } from '../../store/authStore';
-import { LayoutDashboard, Receipt, Lightbulb, Settings, LogOut } from 'lucide-react';
+import { LayoutDashboard, Receipt, Lightbulb, Settings, LogOut, Sparkles } from 'lucide-react';
 import { Badge } from '../ui/Badge';
 import zorvynLogo from '../../assets/zorvynimg.png';
 
@@ -19,6 +19,7 @@ export function Sidebar() {
     { name: 'Dashboard', path: '/', icon: LayoutDashboard },
     { name: 'Transactions', path: '/transactions', icon: Receipt },
     { name: 'Insights', path: '/insights', icon: Lightbulb },
+    { name: 'LISA AI', path: '/lisa-ai', icon: Sparkles },
   ];
 
   const wClass = sidebarCollapsed ? 'w-20' : 'w-64';

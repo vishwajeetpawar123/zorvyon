@@ -3,6 +3,7 @@ import { DashboardLayout } from '@/components/layout/DashboardLayout';
 import { DashboardPage } from '@/features/dashboard/DashboardPage';
 import { TransactionsPage } from '@/features/transactions/TransactionsPage';
 import { InsightsPage } from '@/features/insights/InsightsPage';
+import { LisaAIPage } from '@/features/ai/LisaAIPage';
 import { LoginPage } from '@/features/auth/LoginPage';
 import { ProtectedRoute } from '@/components/layout/ProtectedRoute';
 import { SettingsPage } from '@/features/settings/SettingsPage';
@@ -20,6 +21,7 @@ function App() {
           <Route index element={<DashboardPage />} />
           <Route path="transactions" element={<TransactionsPage />} />
           <Route path="insights" element={<InsightsPage />} />
+          <Route path="lisa-ai" element={<LisaAIPage />} />
           <Route path="settings" element={<SettingsPage />} />
         </Route>
       </Routes>

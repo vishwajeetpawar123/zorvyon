@@ -1,5 +1,5 @@
 import { NavLink, useNavigate } from 'react-router-dom';
-import { LayoutDashboard, Receipt, Lightbulb, Settings, LogOut } from 'lucide-react';
+import { LayoutDashboard, Receipt, Lightbulb, Settings, LogOut, Sparkles } from 'lucide-react';
 import { useAuthStore } from '@/store/authStore';
 
 export function MobileNav() {
@@ -15,6 +15,7 @@ export function MobileNav() {
     { name: 'Home', path: '/', icon: LayoutDashboard },
     { name: 'Txns', path: '/transactions', icon: Receipt },
     { name: 'Insights', path: '/insights', icon: Lightbulb },
+    { name: 'LISA', path: '/lisa-ai', icon: Sparkles },
     { name: 'Settings', path: '/settings', icon: Settings },
   ];
 
