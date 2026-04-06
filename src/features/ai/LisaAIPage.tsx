@@ -5,7 +5,6 @@ import { getAiInsights, getTopCategories } from '../../utils/insightEngine';
 import { getLisaResponse, ChatMessage } from './api';
 import { Card } from '../../components/ui/Card';
 import { Button } from '../../components/ui/Button';
-import { Input } from '../../components/ui/Input';
 import { Send, Bot, User, Sparkles, Loader2, AlertCircle } from 'lucide-react';
 
 export function LisaAIPage() {
@@ -37,7 +36,6 @@ export function LisaAIPage() {
       setIsLoading(true);
       setError(null);
       try {
-        const initialPrompt = "Please analyze my current spending summary and provide a brief, professional overview as my lead intelligent savings assistant.";
         const responseText = await getLisaResponse([], {
           transactions,
           stats,
