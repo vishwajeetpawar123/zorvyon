@@ -116,9 +116,9 @@ export const LoginPage = () => {
                 </div>
                 <button 
                   onClick={() => setUsername('abc')}
-                  className="text-xs font-medium text-accent-primary bg-accent-primary/10 hover:bg-accent-primary/20 px-3 py-1.5 rounded-lg transition-colors"
+                  className="text-xs font-bold text-accent-primary bg-accent-primary/10 hover:bg-accent-primary/20 border border-accent-primary/30 shadow-sm shadow-accent-primary/20 px-3 py-1.5 rounded-lg transition-colors"
                 >
-                  Fill
+                  Auto Fill
                 </button>
               </div>
             </div>
@@ -134,9 +134,9 @@ export const LoginPage = () => {
                 </div>
                 <button 
                   onClick={() => setPassword('123')}
-                  className="text-xs font-medium text-accent-primary bg-accent-primary/10 hover:bg-accent-primary/20 px-3 py-1.5 rounded-lg transition-colors"
+                  className="text-xs font-bold text-accent-primary bg-accent-primary/10 hover:bg-accent-primary/20 border border-accent-primary/30 shadow-sm shadow-accent-primary/20 px-3 py-1.5 rounded-lg transition-colors"
                 >
-                  Fill
+                  Auto Fill
                 </button>
               </div>
             </div>

@@ -12,6 +12,7 @@ export const SettingsPage = () => {
     alertsEnabled, setAlertsEnabled,
     weeklySummaries, setWeeklySummaries,
     linkedBanks, unlinkBank, addBank,
+    budgetGoals, setBudgetLimit,
   } = useUIStore();
 
   const [twoFactorAuth, setTwoFactorAuth] = useState(true);
@@ -158,12 +159,32 @@ export const SettingsPage = () => {
                   onChange={(e) => handleCurrencyChange(e.target.value as Currency)}
                   className="w-full px-4 py-2.5 border border-border-default rounded-xl bg-bg-base text-text-primary focus:ring-2 focus:ring-accent-primary"
                 >
+                  <option value="INR">INR (₹) - Indian Rupee</option>
                   <option value="USD">USD ($) - US Dollar</option>
                   <option value="EUR">EUR (€) - Euro</option>
                   <option value="GBP">GBP (£) - British Pound</option>
                   <option value="JPY">JPY (¥) - Japanese Yen</option>
                 </select>
               </div>
+            </div>
+          </div>
+
+          {/* Budget Limits */}
+          <div className="glass-panel border border-border-default rounded-2xl p-6 shadow-sm bg-bg-surface/50">
+            <h2 className="text-lg font-bold text-text-primary mb-4">Budget Limits</h2>
+            
+            <div className="space-y-4">
+              {budgetGoals.map(goal => (
+                <div key={goal.category}>
+                  <label className="block text-sm font-medium text-text-secondary mb-1 capitalize">{goal.category} Limit</label>
+                  <input 
+                    type="number" 
+                    value={goal.limit}
+                    onChange={(e) => setBudgetLimit(goal.category, Number(e.target.value))}
+                    className="w-full px-4 py-2.5 border border-border-default rounded-xl bg-bg-base text-text-primary focus:ring-2 focus:ring-accent-primary" 
+                  />
+                </div>
+              ))}
             </div>
           </div>
 

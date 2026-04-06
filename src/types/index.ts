@@ -7,17 +7,17 @@ export type Category =
 
 export interface Transaction {
   id: string;
-  date: string;
+  date: string;           // ISO date string
   description: string;
   category: Category;
   type: 'income' | 'expense';
-  amount: number;
+  amount: number;         // Always positive, type determines sign
   status: 'completed' | 'pending';
 }
 
 export type Role = 'viewer' | 'admin';
 export type Theme = 'dark' | 'light';
-export type Currency = 'USD' | 'EUR' | 'GBP' | 'JPY';
+export type Currency = 'USD' | 'EUR' | 'GBP' | 'JPY' | 'INR';
 
 export interface LinkedBank {
   id: number;
@@ -48,4 +48,9 @@ export interface Insight {
   type: 'positive' | 'negative' | 'neutral' | 'warning';
   value: string | number;
   icon: string;
+}
+
+export interface BudgetGoal {
+  category: Category;
+  limit: number;
 }

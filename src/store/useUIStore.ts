@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { Theme, Role, Currency, LinkedBank } from '../types';
+import { Theme, Role, Currency, LinkedBank, BudgetGoal } from '../types';
 
 interface UIStore {
   theme: Theme;
@@ -14,6 +14,8 @@ interface UIStore {
   alertsEnabled: boolean;
   weeklySummaries: boolean;
   linkedBanks: LinkedBank[];
+  budgetGoals: BudgetGoal[];
+  hasSeenTour: boolean;
 
   toggleTheme: () => void;
   setRole: (role: Role) => void;
@@ -28,6 +30,8 @@ interface UIStore {
   setWeeklySummaries: (v: boolean) => void;
   unlinkBank: (id: number) => void;
   addBank: (bank: LinkedBank) => void;
+  setBudgetLimit: (category: string, limit: number) => void;
+  setHasSeenTour: (v: boolean) => void;
 }
 
 export const useUIStore = create<UIStore>()(
@@ -38,7 +42,7 @@ export const useUIStore = create<UIStore>()(
       sidebarCollapsed: false,
       activeModal: null,
 
-      currency: 'USD',
+      currency: 'INR',
       profileName: 'Vaishnavi',
       profileEmail: 'vaishnavi@zorvyn.com',
       alertsEnabled: true,
@@ -47,6 +51,12 @@ export const useUIStore = create<UIStore>()(
         { id: 1, name: 'Chase Bank', type: 'Checking', masked: '•••• 4432' },
         { id: 2, name: 'Bank of America', type: 'Credit Card', masked: '•••• 9011' },
       ],
+      budgetGoals: [
+        { category: 'Dining', limit: 4000, spent: 2850 },
+        { category: 'Shopping', limit: 8000, spent: 6500 },
+        { category: 'Entertainment', limit: 2500, spent: 2900 },
+      ],
+      hasSeenTour: false,
 
       toggleTheme: () =>
         set((state) => {
@@ -77,6 +87,13 @@ export const useUIStore = create<UIStore>()(
         set((state) => ({
           linkedBanks: [...state.linkedBanks, bank],
         })),
+        
+      setBudgetLimit: (category, limit) => set((state) => ({
+        budgetGoals: state.budgetGoals.map(goal => 
+          goal.category === category ? { ...goal, limit } : goal
+        )
+      })),
+      setHasSeenTour: (hasSeenTour) => set({ hasSeenTour }),
     }),
     {
       name: 'zorvyn-ui-storage',
@@ -90,6 +107,8 @@ export const useUIStore = create<UIStore>()(
         alertsEnabled: state.alertsEnabled,
         weeklySummaries: state.weeklySummaries,
         linkedBanks: state.linkedBanks,
+        budgetGoals: state.budgetGoals,
+        hasSeenTour: state.hasSeenTour,
       }),
       onRehydrateStorage: () => (state) => {
         if (state) {

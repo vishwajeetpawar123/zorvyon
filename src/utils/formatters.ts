@@ -6,6 +6,7 @@ const currencyMap: Record<Currency, { locale: string; currency: string }> = {
   EUR: { locale: 'de-DE', currency: 'EUR' },
   GBP: { locale: 'en-GB', currency: 'GBP' },
   JPY: { locale: 'ja-JP', currency: 'JPY' },
+  INR: { locale: 'en-IN', currency: 'INR' },
 };
 
 export function formatCurrency(amount: number, code: Currency = 'USD'): string {
@@ -54,6 +55,7 @@ export function getCurrencySymbol(code: Currency): string {
     case 'EUR': return '€';
     case 'GBP': return '£';
     case 'JPY': return '¥';
+    case 'INR': return '₹';
     default: return '$';
   }
 }

@@ -18,7 +18,10 @@ export function ToastContainer() {
   const [toasts, setToasts] = useState<ToastMessage[]>([]);
 
   const addToast = useCallback((msg: ToastMessage) => {
-    setToasts((prev) => [...prev, msg]);
+    setToasts((prev) => {
+      const newToasts = [...prev, msg];
+      return newToasts.slice(-5);
+    });
   }, []);
 
   useEffect(() => {
@@ -34,10 +37,13 @@ export function ToastContainer() {
 
   useEffect(() => {
     if (toasts.length === 0) return;
-    const timer = setTimeout(() => {
-      setToasts((prev) => prev.slice(1));
-    }, 3000);
-    return () => clearTimeout(timer);
+    
+    // Create individual timers for each toast to dismiss exactly 3s after mounting
+    const timers = toasts.map(toast => {
+      return setTimeout(() => dismiss(toast.id), 3000);
+    });
+
+    return () => timers.forEach(clearTimeout);
   }, [toasts]);
 
   return (

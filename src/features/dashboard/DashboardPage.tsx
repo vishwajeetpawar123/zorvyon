@@ -2,6 +2,7 @@ import { SummaryCards } from './SummaryCards';
 import { BalanceTrend } from './BalanceTrend';
 import { SpendingBreakdown } from './SpendingBreakdown';
 import { RecentTransactions } from './RecentTransactions';
+import { BudgetGoals } from './BudgetGoals';
 import { useUIStore } from '../../store/useUIStore';
 import { Button } from '../../components/ui/Button';
 import { Plus } from 'lucide-react';
@@ -39,6 +40,7 @@ export function DashboardPage() {
       
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <BalanceTrend />
+        <BudgetGoals />
         <SpendingBreakdown />
         <RecentTransactions />
       </div>

@@ -3,6 +3,7 @@ import { Sidebar } from './Sidebar';
 import { Header } from './Header';
 import { MobileNav } from './MobileNav';
 import { ToastContainer } from '../ui/Toast';
+import { WelcomeTour } from '../ui/WelcomeTour';
 import { useUIStore } from '../../store/useUIStore';
 
 export function DashboardLayout() {
@@ -28,6 +29,7 @@ export function DashboardLayout() {
 
       <MobileNav />
       <ToastContainer />
+      <WelcomeTour />
     </>
   );
 }
