@@ -1,6 +1,6 @@
 # Zorvyn -- Personal Finance Dashboard
 
-Zorvyn is a feature-rich, single-page financial dashboard built with React 19 and TypeScript. It provides users with a complete view of their personal finances through interactive charts, real-time transaction management, AI-driven spending insights, and a fully themeable interface that works seamlessly across desktop and mobile devices.
+Zorvyn is a feature-rich, single-page financial dashboard built with React 19 and TypeScript. It provides users with a complete view of their personal finances through interactive charts, real-time transaction management, AI-driven spending insights, a conversational AI financial assistant (LISA), and a fully themeable interface that works seamlessly across desktop and mobile devices.
 
 The project was designed to demonstrate production-grade front-end engineering: clean architecture, thoughtful state management, responsive design, and polished user experience, all without a backend dependency.
 
@@ -58,6 +58,8 @@ The login page includes an "Evaluator Access" panel with auto-fill buttons so yo
 
 - **Animated Numbers** -- Summary card values use a custom `useAnimatedNumber` hook with exponential easing to smoothly count up from zero on render, giving the dashboard a polished, alive feel.
 
+- **LISA AI Assistant** -- An integrated conversational AI chatbot powered by Google's Gemini 3.1 Flash-Lite model. LISA (Lead Intelligent Savings Assistant) receives the user's full financial context (transactions, category breakdowns, and insight engine output) as a system prompt and provides personalized spending analysis, savings recommendations, and budget advice through a real-time chat interface.
+
 ---
 
 ## Technology Stack
@@ -73,6 +75,7 @@ The login page includes an "Evaluator Access" panel with auto-fill buttons so yo
 | Charts            | Recharts             | 3.8      | Declarative SVG charting (Area, Pie, Bar)                |
 | Date Utilities    | date-fns             | 4.1      | Immutable date formatting and manipulation               |
 | Icons             | Lucide React         | 1.7      | Tree-shakeable SVG icon library                          |
+| AI Engine         | Google Gemini API    | v1beta   | Conversational AI via Gemini 3.1 Flash-Lite (REST)       |
 | Linting           | ESLint               | 9.39     | Code quality enforcement with React-specific plugins     |
 | Fonts             | Inter, JetBrains Mono| --       | Custom sans-serif and monospace typography via CSS        |
 
@@ -136,6 +139,9 @@ _production/
     |-- features/
         |-- auth/
         |   |-- LoginPage.tsx         # Login form with evaluator credential panel
+        |-- ai/
+        |   |-- LisaAIPage.tsx        # Conversational AI chat interface
+        |   |-- api.ts               # Gemini API service layer with context injection
         |-- dashboard/
         |   |-- DashboardPage.tsx     # Dashboard page composition
         |   |-- SummaryCards.tsx       # Four animated KPI cards
@@ -235,6 +241,20 @@ The insight engine (`src/utils/insightEngine.ts`) performs four analyses on the 
 Each insight is rendered as a card with a typed icon (positive/negative/warning/neutral), a description, and a formatted value.
 
 The **MonthlyComparison** chart renders income and expenses as a grouped bar chart. Bars use rounded top corners and cap at a maximum width of 40px for visual consistency regardless of the number of data points.
+
+### LISA AI Assistant
+
+LISA (Lead Intelligent Savings Assistant) is a context-aware conversational AI integrated directly into the dashboard. It is accessible via the "LISA AI" sidebar item and provides a full chat interface.
+
+**Architecture:**
+
+- **Service Layer** (`src/features/ai/api.ts`) -- Handles communication with the Google Gemini API (v1beta) using the `gemini-3.1-flash-lite-preview` model via the `generateContent` REST endpoint. The service constructs a system prompt that injects the user's complete financial context: all transactions, top category breakdowns from `getTopCategories()`, AI insight summaries from `getAiInsights()`, the user's profile name, and their currency preference.
+
+- **Chat Interface** (`src/features/ai/LisaAIPage.tsx`) -- A glassmorphic chat UI with a fixed input bar at the bottom and a scrollable message history above. Messages are rendered with user/bot avatars, bubble-style containers, and markdown-to-HTML formatting that converts bold markers into styled `<strong>` elements. The interface includes loading states with a pulsing bot avatar and an "is thinking" indicator, error states with actionable guidance for API key issues, and smooth auto-scroll to the latest message.
+
+- **Initialization** -- On mount, LISA automatically sends a "Hello" greeting from the user and responds with a contextual financial summary. This gives users immediate value without requiring them to formulate a first question.
+
+- **Context Injection** -- Every API call includes the full transaction dataset, category statistics, and insight engine output in the system prompt. This means LISA can reference specific spending figures, identify the user's highest-cost categories, and provide advice grounded in their actual data rather than generic financial tips.
 
 ### Settings
 
@@ -373,6 +393,16 @@ The project uses TypeScript 5.9 in strict mode with the following compiler optio
 - Module resolution set to `bundler` for Vite compatibility
 - JSX set to `react-jsx` for automatic runtime
 - Path aliases configured for the `@` prefix
+
+### LISA AI (Gemini API)
+
+The LISA AI feature requires a Google Gemini API key. Create a `.env.local` file in the `_production` directory:
+
+```bash
+VITE_AI_API_KEY=your_gemini_api_key_here
+```
+
+The key is read at runtime via `import.meta.env.VITE_AI_API_KEY`. Without it, the LISA page will display an error with setup instructions. You can obtain a free API key from [Google AI Studio](https://aistudio.google.com/).
 
 ---
 
