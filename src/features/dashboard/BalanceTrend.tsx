@@ -52,7 +52,7 @@ export function BalanceTrend() {
   return (
     <Card 
       glass
-      className="col-span-1 lg:col-span-2 animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-both"
+      className="col-span-1 lg:col-span-2 h-[420px] animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-both"
       contentClassName="flex flex-col"
       style={{ animationDelay: '200ms' }}
     >

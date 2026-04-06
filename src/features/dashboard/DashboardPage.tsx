@@ -40,10 +40,10 @@ export function DashboardPage() {
       
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <BalanceTrend />
-        <BudgetGoals />
-        <div className="lg:row-span-2">
+        <div className="lg:row-span-2 flex flex-col">
           <SpendingBreakdown />
         </div>
+        <BudgetGoals />
         <RecentTransactions />
       </div>
     </div>
