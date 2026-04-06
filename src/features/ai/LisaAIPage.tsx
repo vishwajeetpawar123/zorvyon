@@ -85,6 +85,15 @@ export function LisaAIPage() {
     }
   };
 
+  const formatAIText = (text: string) => {
+    // Simple bold formatting for **text** or *text*
+    const formatted = text
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.*?)\*/g, '<strong>$1</strong>');
+    
+    return <div dangerouslySetInnerHTML={{ __html: formatted }} />;
+  };
+
   return (
     <div className="h-[calc(100vh-140px)] flex flex-col space-y-4 max-w-4xl mx-auto pb-4">
       <header className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 animate-in fade-in slide-in-from-top-4 duration-500 fill-mode-both">
@@ -123,8 +132,8 @@ export function LisaAIPage() {
                   ? 'bg-accent-glow text-text-primary rounded-tr-none border border-accent-primary/20' 
                   : 'bg-bg-elevated text-text-primary rounded-tl-none border border-border-default shadow-sm'
               }`}>
-                <div className="whitespace-pre-wrap prose prose-invert max-w-none">
-                  {msg.parts[0].text}
+                <div className="whitespace-pre-wrap prose prose-invert max-w-none prose-strong:text-accent-primary prose-strong:font-bold">
+                  {formatAIText(msg.parts[0].text)}
                 </div>
               </div>
             </div>
