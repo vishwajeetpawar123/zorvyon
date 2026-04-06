@@ -52,9 +52,9 @@ export const useUIStore = create<UIStore>()(
         { id: 2, name: 'Bank of America', type: 'Credit Card', masked: '•••• 9011' },
       ],
       budgetGoals: [
-        { category: 'Dining', limit: 4000, spent: 2850 },
-        { category: 'Shopping', limit: 8000, spent: 6500 },
-        { category: 'Entertainment', limit: 2500, spent: 2900 },
+        { category: 'dining', limit: 4000, spent: 2850 },
+        { category: 'shopping', limit: 8000, spent: 6500 },
+        { category: 'entertainment', limit: 2500, spent: 2900 },
       ],
       hasSeenTour: false,
 

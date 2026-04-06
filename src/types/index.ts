@@ -53,4 +53,5 @@ export interface Insight {
 export interface BudgetGoal {
   category: Category;
   limit: number;
+  spent: number;
 }
