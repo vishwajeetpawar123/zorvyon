@@ -33,10 +33,13 @@ export function LisaAIPage() {
       // Don't re-trigger if we already have messages
       if (messages.length > 0) return;
       
+      const initialMessage = { role: 'user' as const, parts: [{ text: 'Hello' }] };
+      setMessages([initialMessage]);
+      
       setIsLoading(true);
       setError(null);
       try {
-        const responseText = await getLisaResponse([], {
+        const responseText = await getLisaResponse([initialMessage], {
           transactions,
           stats,
           insights,
@@ -45,10 +48,13 @@ export function LisaAIPage() {
         });
         
         setMessages([
+          initialMessage,
           { role: 'model', parts: [{ text: responseText }] }
         ]);
       } catch (err: any) {
         setError(err.message || 'Failed to initialize LISA AI');
+        // Clear the hello message if it failed so user can try again
+        setMessages([]);
       } finally {
         setIsLoading(false);
       }
